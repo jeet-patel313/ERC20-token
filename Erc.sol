@@ -29,19 +29,19 @@ contract ICOfunding is Erc {
         if (tokenAlloted <= 30000000) {
             require(msg.value != 0, 
             "value cannot be empty");
-            _tokenAmt = (msg.value * 25)/(10 ** 15);
+            _tokenAmt = (msg.value * 25)/(10 ** 14);
             tokenAlloted += _tokenAmt;
             _transfer(address(this), msg.sender, _tokenAmt);
         } else if (tokenAlloted <= 80000000) {
             require(msg.value != 0, 
             "value cannot be empty 2");
-            _tokenAmt = (msg.value * 625)/(10 ** 17);
+            _tokenAmt = (msg.value * 625)/(10 ** 16);
             tokenAlloted += _tokenAmt;
             _transfer(address(this), msg.sender, _tokenAmt);
         } else if (tokenAlloted <= 100000000) {
             require(msg.value != 0,
             "value cannot be empty 3");
-            _tokenAmt = (msg.value * 25)/(10 ** 17) ;
+            _tokenAmt = (msg.value * 25)/(10 ** 16) ;
             tokenAlloted += _tokenAmt;
             _transfer(address(this), msg.sender, _tokenAmt);
         }
