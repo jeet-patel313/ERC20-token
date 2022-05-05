@@ -14,7 +14,7 @@ contract Erc is ERC20 {
     //  */
     constructor() public ERC20('ERCTask', 'ERT') {
         // ownerAdd = msg.sender;
-        _mint(address(this), 100000000);
+        _mint(address(this), 100000000 * 1e18);
     }
 }
 
@@ -28,16 +28,16 @@ contract ICOfunding is Erc {
         uint _tokenAmt = 0;
         require(msg.value != 0, 
         "value cannot be empty");
-        if (tokenAlloted <= 30000000) {
-            _tokenAmt = (msg.value * 25)/(10 ** 14);
+        if (tokenAlloted <= 30000000 * 1e18) {
+            _tokenAmt = (msg.value * 25 * 1e18)/(10 ** 14);
             tokenAlloted += _tokenAmt;
             _transfer(address(this), msg.sender, _tokenAmt);
-        } else if (tokenAlloted <= 80000000) {
-            _tokenAmt = (msg.value * 625)/(10 ** 16);
+        } else if (tokenAlloted <= 80000000 * 1e18) {
+            _tokenAmt = (msg.value * 625 * 1e18)/(10 ** 16);
             tokenAlloted += _tokenAmt;
             _transfer(address(this), msg.sender, _tokenAmt);
-        } else if (tokenAlloted <= 100000000) {
-            _tokenAmt = (msg.value * 25)/(10 ** 16) ;
+        } else if (tokenAlloted <= 100000000 * 1e18) {
+            _tokenAmt = (msg.value * 25 * 1e18)/(10 ** 16) ;
             tokenAlloted += _tokenAmt;
             _transfer(address(this), msg.sender, _tokenAmt);
         }
