@@ -18,29 +18,31 @@ contract Erc is ERC20 {
     }
 }
 
-contract ICOfunding is Erc {    
+contract ErcContract is Erc {    
     uint256 public tokenAlloted;
+    uint256 public value;
     // /**
     //  * @title transfer function
     //  * @notice transfers token to the address that calls this function
     //  */
     function saleEvent() public payable {
         uint _tokenAmt = 0;
-        require(msg.value != 0, 
+        value = msg.value;
+        require(value != 0, 
         "value cannot be empty");
         if (tokenAlloted <= 30000000 * 1e18) {
-            // _tokenAmt = (msg.value * 25 * 1e18)/(10 ** 14);
-            _tokenAmt = (msg.value * 25 * 10 ** 4);
+            // _tokenAmt = (value * 25 * 1e18)/(10 ** 14);
+            _tokenAmt = (value * 25 * 10 ** 4);
             tokenAlloted += _tokenAmt;
             _transfer(address(this), msg.sender, _tokenAmt);
         } else if (tokenAlloted <= 80000000 * 1e18) {
-            // _tokenAmt = (msg.value * 625 * 1e18)/(10 ** 16);
-            _tokenAmt = (msg.value * 625 * 10 ** 2);
+            // _tokenAmt = (value * 625 * 1e18)/(10 ** 16);
+            _tokenAmt = (value * 625 * 10 ** 2);
             tokenAlloted += _tokenAmt;
             _transfer(address(this), msg.sender, _tokenAmt);
         } else if (tokenAlloted <= 100000000 * 1e18) {
-            // _tokenAmt = (msg.value * 25 * 1e18)/(10 ** 16) ;
-            _tokenAmt = (msg.value * 25 * 10 ** 2);
+            // _tokenAmt = (value * 25 * 1e18)/(10 ** 16) ;
+            _tokenAmt = (value * 25 * 10 ** 2);
             tokenAlloted += _tokenAmt;
             _transfer(address(this), msg.sender, _tokenAmt);
         }
